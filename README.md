@@ -9,3 +9,8 @@ tilda-cipher-mail service
       -d "param1=value1&param2=value2"                                 \
       -v
 ```
+### Crontab
+Every hour
+```
+0 * * * *  /opt/tilda-cipher-mail/job.sh
+```
