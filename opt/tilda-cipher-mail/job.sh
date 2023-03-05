@@ -15,8 +15,10 @@ DATAFILE="/var/$SERVICENAME/data.txt"
 TMPFILE="/var/$SERVICENAME/tmp.txt"
 ENCFILE="/var/$SERVICENAME/data.enc.txt"
 CERTFILE="/etc/$SERVICENAME/$SERVICENAME.cer"
+MSGFILE="/etc/$SERVICENAME/$SERVICENAME.msg"
 LOGFILE="/var/$SERVICENAME/log.txt"
 CRYPTCP=/opt/cprocsp/bin/amd64/cryptcp
+EMAIL="$SERVICENAME <${SERVICENAME}@${HOSTNAME}>"
 
 echo -n "tilda-cipher-mail daemon started on ">>"$LOGFILE"
 date>>"$LOGFILE"
@@ -31,6 +33,9 @@ fi
 rm -f "$ENCFILE"
 "$CRYPTCP" -encr -f "$CERTFILE" "$TMPFILE" "$ENCFILE">>"$LOGFILE"
 rm "$TMPFILE"
+
+EMAIL="$SERVICENAME <${SERVICENAME}@1295435-cb87573.tw1.ru>"
+mutt -e "my_hdr From:$EMAIL" -y -s "Данные от Tilda" -a "$ENCFILE" -- maxim@samsonov.net<"$MSGFILE"
 
 echo -n "tilda-cipher-mail daemon finished on ">>"$LOGFILE"
 date>>"$LOGFILE"
