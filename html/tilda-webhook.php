@@ -14,7 +14,9 @@
 
  header("Access-Control-Allow-Origin: *");
 
- $data = print_r($_POST, true).PHP_EOL;
+ $_SERVER["REQUEST_METHOD"] === "POST" or die("POST method was expected, got ".$_SERVER["REQUEST_METHOD"]);
+
+ $data = print_r(json_encode($_POST, JSON_FORCE_OBJECT), true).PHP_EOL;
  file_put_contents(DATAFILE, $data , FILE_APPEND | LOCK_EX) or die("Unable to append to file ".DATAFILE);
 
  $headers = "From: tilda-cipher-mail@samsonov.net";
