@@ -3,16 +3,19 @@ tilda-cipher-mail service
 
 ### Конфигурация
 - Текст e-mail сообщения: /etc/tilda-cipher-mail/tilda-cipher-mail.msg
-- Сертификат Крипто Про:  /opt/tilda-cipher-mail/job.sh, пересенная CERTFILE
+- Сертификат Крипто Про:  /opt/tilda-cipher-mail/job.sh, переменная CERTFILE
 - Адрес для отпраки писем: /opt/tilda-cipher-mail/job.sh, переменная EMAIL_TO
 
 [в GitHub серификат полученный в тестовом удостоверяющем центре https://cryptopro.ru/certsrv/]
 
 ### Tilda webhook для приема данных из форм
-В соотвествии с https://help-ru.tilda.cc/forms/webhook 
-URL https://1295435-cb87573.tw1.ru/tilda-webhook.php
+Сделан по требованиям https://help-ru.tilda.cc/forms/webhook 
+
+URL: https://1295435-cb87573.tw1.ru/tilda-webhook.php
+
+Пример вызова:
 ```
- curl -X POST https://1295435-cb87573.tw1.ru/tilda-webhook.php         \
+ curl POST https://1295435-cb87573.tw1.ru/tilda-webhook.php            \
       -H "Content-Type: application/x-www-form-urlencoded"             \
       -d "param1=value1&param2=value2"                                 \
       -v
