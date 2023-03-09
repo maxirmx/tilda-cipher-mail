@@ -3,7 +3,7 @@ tilda-cipher-mail service
 
 ### Конфигурация
 - Текст e-mail сообщения: /etc/tilda-cipher-mail/tilda-cipher-mail.msg
-- Сертификат Крипто Про:  /opt/tilda-cipher-mail/job.sh, пересенная CERTFILE
+- Сертификат Крипто Про:  /opt/tilda-cipher-mail/job.sh, переменная CERTFILE
 - Адрес для отпраки писем: /opt/tilda-cipher-mail/job.sh, переменная EMAIL_TO
 
 [в GitHub серификат полученный в тестовом удостоверяющем центре https://cryptopro.ru/certsrv/]
