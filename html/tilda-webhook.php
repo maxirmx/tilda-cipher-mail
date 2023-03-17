@@ -19,8 +19,5 @@
  $data = print_r(json_encode($_POST, JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE), true).PHP_EOL;
  file_put_contents(DATAFILE, $data , FILE_APPEND | LOCK_EX) or die("Unable to append to file ".DATAFILE);
 
- // $headers = "From: tilda-cipher-mail <tilda-cipher-mail@1295435-cb87573.tw1.ru>";
- // @mail('maxim@samsonov.net', 'Tilda TEST', $data, $headers);
-
  echo "ok";
 ?>

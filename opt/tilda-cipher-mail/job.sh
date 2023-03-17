@@ -1,7 +1,7 @@
 #!/bin/bash
 # cron job
 #
-# Tilda callback
+# Tilda daemon
 #
 # @author  Максим Самсонов <maxim@samsonov.net>
 # @copyright  2023 Максим Самсонов, его родственники и знакомые
@@ -24,7 +24,7 @@ LOGFILE="/var/$SERVICENAME/log.txt"
 #LOGFILE="/dev/nul"
 CRYPTCP=/opt/cprocsp/bin/amd64/cryptcp
 EMAIL_FROM="sender-service <sender-service@${HOSTNAME}>"
-EMAIL_TO="nowhere@sw.consulting"
+EMAIL_TO="my@email"
 
 echo -n "tilda-cipher-mail daemon started on ">>"$LOGFILE"
 date>>"$LOGFILE"
@@ -34,8 +34,8 @@ rm -f "$JSONFILE"
 rm -f "$CSVFILE"
 
 if [[ -f "$DATAFILE" ]]; then
-  flock -w 5 -x "$DATAFILE" -c "cp $DATAFILE $TMPFILE"
-  sed '1s/^/[/;$!s/$/,/;$s/$/]/'  "$DATAFILE" > "$JSONFILE"
+  flock -w 5 -x "$DATAFILE" -c "mv $DATAFILE $TMPFILE"
+  sed '1s/^/[/;$!s/$/,/;$s/$/]/'  "$TMPFILE" > "$JSONFILE"
   /opt/"$SERVICENAME"/convert.php "$JSONFILE" "$CSVFILE"
 else
   echo "Нет данных" > "$TMPFILE"
