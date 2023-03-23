@@ -15,7 +15,7 @@ URL: https://1295435-cb87573.tw1.ru/tilda-webhook.php
 
 Пример вызова:
 ```
- curl POST https://1295435-cb87573.tw1.ru/tilda-webhook.php            \
+ curl https://1295435-cb87573.tw1.ru/tilda-webhook.php                 \
       -H "Content-Type: application/x-www-form-urlencoded"             \
       -d "param1=value1&param2=value2"                                 \
       -v
